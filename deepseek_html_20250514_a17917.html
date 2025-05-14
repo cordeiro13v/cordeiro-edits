@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Cordeiro Edits | Fivem</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0f0f0f;
+            color: #ffffff;
+        }
+        
+        /* Seção do Portfólio */
+        .portfolio {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        
+        .portfolio h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ff5500;
+        }
+        
+        .portfolio-subtitle {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #cccccc;
+        }
+        
+        /* Botões de Categoria */
+        .category-buttons {
+            margin-bottom: 30px;
+        }
+        
+        .category-btn {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: 1px solid #ff5500;
+            padding: 10px 25px;
+            margin: 0 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background-color: #ff5500;
+            color: #000000;
+        }
+        
+        /* Container do Vídeo em Destaque */
+        .video-highlight {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 85, 0, 0.1);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-description {
+            padding: 20px;
+            text-align: left;
+        }
+        
+        .video-description h3 {
+            color: #ff5500;
+            margin-top: 0;
+        }
+        
+        .video-description p {
+            color: #cccccc;
+        }
+        
+        /* Esconde vídeos não selecionados */
+        .video-category {
+            display: none;
+        }
+        
+        .video-category.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Seção do Portfólio -->
+    <section class="portfolio" id="portfolio">
+        <h2>Portfólio</h2>
+        <p class="portfolio-subtitle">Clique abaixo para ver exemplos das minhas edições para <strong>Fivem</strong></p>
+        
+        <!-- Botões de Categoria -->
+        <div class="category-buttons">
+            <button class="category-btn active" data-category="simple">Simples</button>
+            <button class="category-btn" data-category="advanced">Avançados</button>
+        </div>
+        
+        <!-- Vídeo em Destaque (Simples) -->
+        <div class="video-category active" id="simple">
+            <div class="video-highlight">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/SEU_VIDEO_SIMPLES" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="video-description">
+                    <h3>Edição Simples</h3>
+                    <p>• Cortes objetivos e sincronizados com música<br>• Transições básicas<br>• Ideal para clipes rápidos e diretos</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Vídeo em Destaque (Avançados) -->
+        <div class="video-category" id="advanced">
+            <div class="video-highlight">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/SEU_VIDEO_AVANCADO" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="video-description">
+                    <h3>Edição Avançada</h3>
+                    <p>• Efeitos visuais e sonoros<br>• Slow motion e textos animados<br>• Color grading profissional</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript para Alternar entre Categorias -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const videoCategories = document.querySelectorAll('.video-category');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove a classe 'active' de todos os botões e vídeos
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    videoCategories.forEach(video => video.classList.remove('active'));
+                    
+                    // Adiciona 'active' apenas no botão e vídeo clicado
+                    button.classList.add('active');
+                    const category = button.getAttribute('data-category');
+                    document.getElementById(category).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
